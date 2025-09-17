@@ -1,0 +1,23 @@
+﻿@page
+@model DailySpark.FinalProject.Pages.AboutModel
+@{
+    ViewData["Title"] = "About page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">About</h1>
+    <p>Created by: Andrew Young</p> <!--Added to identify creator-->
+</div>
+
+<div class="my-custom-card">
+    @foreach (var about in Model.AboutDiscription)
+    {
+	<div class="card-image-wrapper">
+			<img src="~/images/computer-code.jpg" class="product-image" />
+		</div>
+        <div class="my-custom-card-body">
+			<h5 class="card-title">@about.Description</h5>
+		</div>
+    
+    }
+</div>

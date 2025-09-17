@@ -1,0 +1,207 @@
+﻿@using System.IO
+@using Microsoft.AspNetCore.Components.Web
+@using DailySpark.FinalProject.Models
+@using DailySpark.FinalProject.Services
+@inject JsonQuoteService QuoteService
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment WebHostEnvironment 
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager 
+
+
+<div class="container text-center mt-5">
+    @if (SelectedQuote != null)
+    {
+        <div class="card d-inline-block shadow-lg" style="width: 25rem;">
+            <div class="card-img" style="background-image: url('@SelectedBackgroundImageUrl'); background-size: cover; background-position: center;"></div>
+            <div class="card-body">
+                <h5 class="card-title">@SelectedQuote.Quote</h5>
+                <p class="card-text text-muted"> - @SelectedQuote.Author</p>
+            </div>
+            <div class="card-footer">
+                @if(voteCount == 0)
+                {
+                    <span>Please Vote for the Quote!</span>
+                }
+                else
+                {
+                    <span>@voteCount @voteLabel</span>
+                }
+
+                @for (int i = 0; i < 5; i++)
+                {
+                    var currentStar = i;
+                    if( i <= currentRating)
+                    {
+						<span class="fa fa-star checked" @onclick="(e => SubmitRating(currentStar))"></span>
+                    }
+                    else
+                    {
+                        <span class="fa fa-star" @onclick="(e => SubmitRating(currentStar))"></span>
+                    }
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            No quote available. Please check your JSON data or service.
+        </div>
+    }
+
+</div>
+<div class="text-center mt-4">
+    <button class="btn btn-primary btn-lg" @onclick="RefreshCard">Show Another Quote</button>
+</div>
+
+<style>
+    .card-img {
+        height: 300px; /* Set a fixed height for the image area */
+        width: 400px; /* Set a fixed width for the image area */
+        background-repeat: no-repeat;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@code {
+    public Quotes SelectedQuote { get; set; }
+    public string SelectedBackgroundImageUrl { get; set; }
+
+    // This needed to be a class-level field to hold all quotes,
+    // so you can find a specific quote by ID after it's been rated.
+    private List<Quotes> _allQuotes;
+
+    string selectedQuoteId; // needed for rating
+
+    // This will be from the tutorial we had so lets rate the quotes
+    int currentRating = 0;  // variable for current rating which will become the average
+    int voteCount = 0;      // to keep track of the number of people who have voted
+    string voteLabel;       // to have a label for the number of voters.
+
+    void SelectQuote(string quoteId)
+    {
+        selectedQuoteId = quoteId;
+
+        // Ensure _allQuotes is populated.
+        if (_allQuotes == null || !_allQuotes.Any())
+        {
+            _allQuotes = QuoteService.GetQuote()?.ToList();
+        }
+
+        // Find the specific quote from the _allQuotes list by ID
+        SelectedQuote = _allQuotes?.FirstOrDefault(x => x.Id == quoteId);
+
+        // If a quote is found, update its reating display
+        /*if(SelectedQuote != null)
+        {
+
+            }
+        else
+        {
+            Console.WriteLine($"Quote with ID '{quoteId}' not found during SelectQuote operation.");
+            currentRating = 0;
+            voteCount = 0;
+            }*/
+                GetCurrentRating();
+        StateHasChanged(); // needed to refresh UI 
+
+    }
+
+    // This method runs when the component is initialized
+    protected override void OnInitialized()
+    {
+        LoadRandomQuoteAndImage();
+    }
+
+    private void RefreshCard()
+    {
+        // Re-execute the logic to load a new random quote and image
+        LoadRandomQuoteAndImage();
+        StateHasChanged(); // needed to refresh UI ;// This will re-render the component with the new data
+    }
+
+    private void LoadRandomQuoteAndImage()
+    {
+        // Quote Randomization Logic 
+        var allQuotes = QuoteService.GetQuote()?.ToList(); // Use ?. for null-conditional check
+
+        if (allQuotes != null && allQuotes.Any())
+        {
+            Random random = new Random();
+            int randomIndex = random.Next(0, allQuotes.Count);
+            SelectedQuote = allQuotes[randomIndex];
+        }
+        else
+        {
+            Console.WriteLine("No quotes were loaded from the JsonQuoteService."); // Using a Console.WriteLine in Blazor components
+            // Optionally set a default SelectedQuote or handle gracefully
+        }
+
+        //  Image Randomization Logic 
+        var imageDirectory = Path.Combine(WebHostEnvironment.WebRootPath, "images", "quote-backgrounds");
+
+        if (Directory.Exists(imageDirectory))
+        {
+            var imageFiles = Directory.GetFiles(imageDirectory)
+                                      .Where(file => file.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                                                     file.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
+                                                     file.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
+                                                     file.EndsWith(".gif", StringComparison.OrdinalIgnoreCase))
+                                      .ToList();
+
+            if (imageFiles.Any())
+            {
+                Random random = new Random();
+                int randomImageIndex = random.Next(0, imageFiles.Count);
+                string selectedImagePath = imageFiles[randomImageIndex];
+
+                // Convert the physical path to a URL path relative to wwwroot
+                SelectedBackgroundImageUrl = selectedImagePath.Replace(WebHostEnvironment.WebRootPath, "").Replace('\\', '/');
+
+                // Ensure it starts with a slash, if it doesn't already
+                if (!SelectedBackgroundImageUrl.StartsWith("/"))
+                {
+                    SelectedBackgroundImageUrl = "/" + SelectedBackgroundImageUrl;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No images found in the 'images/quote-backgrounds' directory.");
+                SelectedBackgroundImageUrl = "/images/default-background.jpg"; // Fallback
+            }
+        }
+        else
+        {
+            Console.WriteLine($"Image directory not found: {imageDirectory}");
+            SelectedBackgroundImageUrl = "/images/default-background.jpg"; // Fallback
+        }
+    }
+
+    // A method for getting the current rating
+    void GetCurrentRating()
+    {
+        if(SelectedQuote.Ratings == null || SelectedQuote.Ratings.Any())
+        {
+            voteCount = SelectedQuote.Ratings.Count();
+            voteLabel = voteCount > 1 ? "Votes" : "Vote";
+            currentRating = SelectedQuote.Ratings.Sum() / voteCount;
+        }
+        else
+        {
+            currentRating = 0;
+            voteCount = 0;
+        }
+
+        System.Console.WriteLine($"Current rating for {SelectedQuote?.Id}: {currentRating}");
+    }
+
+    void SubmitRating(int rating)
+    {
+        System.Console.WriteLine($"Rating received for {SelectedQuote?.Id}: {rating}");
+        selectedQuoteId = SelectedQuote.Id;
+        if (selectedQuoteId == null)
+            return;
+        QuoteService.AddRating(selectedQuoteId, rating);
+        SelectQuote(selectedQuoteId);
+    }
+}

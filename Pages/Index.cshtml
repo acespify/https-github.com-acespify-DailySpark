@@ -1,0 +1,18 @@
+﻿@page
+@using DailySpark.FinalProject.Components
+@model IS370_YoungFinalProject.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Daily Spark</h1>
+    <p>Here's your inspirational quote of the day:</p>
+    <p>Created by: Andrew Young</p> <!--Added to identify creator-->
+</div>
+
+
+    @(await Html.RenderComponentAsync<QuoteList>(RenderMode.ServerPrerendered))
+
+
+<script src="_framework/blazor.server.js"></script>

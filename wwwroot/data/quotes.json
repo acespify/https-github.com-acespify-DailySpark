@@ -1,0 +1,269 @@
+[
+  {
+    "Id": "GIM-001",
+    "Quote": "The future belongs to those who believe in the beauty of their dreams.",
+    "Author": "Eleanor Roosevelt",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "GIM-002",
+    "Quote": "Believe you can and you\u0027re halfway there.",
+    "Author": "Theodore Roosevelt",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "GIM-003",
+    "Quote": "The only way to do great work is to love what you do.",
+    "Author": "Steve Jobs",
+    "Image": null,
+    "Ratings": [
+      3,
+      4
+    ]
+  },
+  {
+    "Id": "GIM-004",
+    "Quote": "You are braver than you believe, stronger than you seem, and smarter than you think.",
+    "Author": "Christopher Robin",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "GIM-005",
+    "Quote": "The mind is everything. What you think you become.",
+    "Author": "Buddha",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "GIM-006",
+    "Quote": "Don\u0027t watch time pass, make time happen.",
+    "Author": "Unknown",
+    "Image": null,
+    "Ratings": [
+      4,
+      2,
+      2
+    ]
+  },
+  {
+    "Id": "GIM-007",
+    "Quote": "Do what you can, with what you have, where you are.",
+    "Author": "Theodore Roosevelt",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "GIM-008",
+    "Quote": "The best view comes after the hardest climb.",
+    "Author": "Unknown",
+    "Image": null,
+    "Ratings": [
+      0
+    ]
+  },
+  {
+    "Id": "GIM-009",
+    "Quote": "The journey of a thousand miles begins with a single step.",
+    "Author": "Lao Tzu",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "GIM-010",
+    "Quote": "It always seems impossible until it\u0027s done.",
+    "Author": "Nelson Mandela",
+    "Image": null,
+    "Ratings": [
+      3
+    ]
+  },
+  {
+    "Id": "GIM-011",
+    "Quote": "True nobility is being superior to your former self.",
+    "Author": "Ernest Hemingway",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "GIM-012",
+    "Quote": "The moment you\u0027re comfortable is the moment you stop growing.",
+    "Author": "Allison Dunn",
+    "Image": null,
+    "Ratings": [
+      4
+    ]
+  },
+  {
+    "Id": "GIM-013",
+    "Quote": "In the middle of difficulty lies opportunity.",
+    "Author": "Albert Einstein",
+    "Image": null,
+    "Ratings": [
+      2
+    ]
+  },
+  {
+    "Id": "OCR-001",
+    "Quote": "The only person who can bring you down is yourself.",
+    "Author": "Unknown",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "OCR-002",
+    "Quote": "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+    "Author": "Nelson Mandela",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "OCR-003",
+    "Quote": "What doesn\u0027t kill you makes you stronger.",
+    "Author": "Friedrich Nietzsche",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "OCR-004",
+    "Quote": "It is not the mountain we conquer, but ourselves.",
+    "Author": "Edmund Hillary",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "OCR-005",
+    "Quote": "The harder the battle, the sweeter the victory.",
+    "Author": "Unknown",
+    "Image": null,
+    "Ratings": [
+      4
+    ]
+  },
+  {
+    "Id": "OCR-006",
+    "Quote": "I have not failed. I have just found 10,000 ways that won\u0027t work.",
+    "Author": "Thomas Edison",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "OCR-007",
+    "Quote": "Do not go where the path may lead, go instead where there is no path and leave a trail.",
+    "Author": "Ralph Waldo Emerson",
+    "Image": null,
+    "Ratings": [
+      1
+    ]
+  },
+  {
+    "Id": "OCR-008",
+    "Quote": "Your attitude determines your altitude.",
+    "Author": "Zig Ziglar",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "OCR-009",
+    "Quote": "Failure is simply the opportunity to begin again, this time more intelligently.",
+    "Author": "Henry Ford",
+    "Image": null,
+    "Ratings": [
+      4
+    ]
+  },
+  {
+    "Id": "OCR-010",
+    "Quote": "Mistakes are the portals of discovery.",
+    "Author": "James Joyce",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "OCR-011",
+    "Quote": "A person who never made a mistake never tried anything new.",
+    "Author": "Albert Einstein",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "OCR-012",
+    "Quote": "The roots of education are bitter, but the fruit is sweet.",
+    "Author": "Aristotle",
+    "Image": null,
+    "Ratings": [
+      2
+    ]
+  },
+  {
+    "Id": "OCR-013",
+    "Quote": "If you aren\u0027t making any mistakes, it\u0027s a sure sign you\u0027re playing it too safe.",
+    "Author": "John Maxwell",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "FGL-001",
+    "Quote": "The only limit to our realization of tomorrow will be our doubts of today.",
+    "Author": "Franklin D. Roosevelt",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "FGL-002",
+    "Quote": "Be the change that you wish to see in the world.",
+    "Author": "Mahatma Gandhi",
+    "Image": null,
+    "Ratings": [
+      3
+    ]
+  },
+  {
+    "Id": "FGL-003",
+    "Quote": "You miss 100% of the shots you don\u0027t take.",
+    "Author": "Wayne Gretzky",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "FGL-004",
+    "Quote": "It always seems impossible until it\u0027s done.",
+    "Author": "Nelson Mandela",
+    "Image": null,
+    "Ratings": [
+      3
+    ]
+  },
+  {
+    "Id": "FGL-005",
+    "Quote": "The only person who can bring you down is yourself.",
+    "Author": "Unknown",
+    "Image": null,
+    "Ratings": [
+      4
+    ]
+  },
+  {
+    "Id": "FGL-006",
+    "Quote": "The only source of knowledge is experience.",
+    "Author": "Albert Einstein",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "FGL-007",
+    "Quote": "Learning never exhausts the min.",
+    "Author": "Leonardo da Vinci",
+    "Image": null,
+    "Ratings": null
+  },
+  {
+    "Id": "FGL-008",
+    "Quote": "The beautiful thing about learning is nobody can take it away from you.",
+    "Author": "B.B. King",
+    "Image": null,
+    "Ratings": null
+  }
+]
