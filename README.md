@@ -1,1 +1,1 @@
-# IS370_YoungFinalProject
+# DailySpark inspirational quotes
